@@ -1,0 +1,41 @@
+name: jaexo_ultimate
+description: The Ultimate Life Dashboard
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # State Management
+  provider: ^6.0.5
+  # UI & Fonts
+  google_fonts: ^6.1.0
+  fl_chart: ^0.65.0
+  confetti: ^0.7.0
+  intl: ^0.18.1
+  percent_indicator: ^4.2.3
+  # Hardware & System
+  battery_plus: ^5.0.0
+  wakelock_plus: ^1.1.0
+  vibration: ^1.8.4
+  android_intent_plus: ^4.0.0
+  network_info_plus: ^5.0.0
+  device_info_plus: ^9.0.0
+  package_info_plus: ^5.0.0
+  # Networking & Data
+  shared_preferences: ^2.2.0
+  uuid: ^4.0.0
+  http: ^1.1.0
+  # Icons
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
