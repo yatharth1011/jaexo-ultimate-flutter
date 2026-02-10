@@ -867,7 +867,7 @@ class _HudScreenState extends State<HudScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
              Text(task.type.toUpperCase(), style: const TextStyle(letterSpacing: 4, color: Colors.grey)),
-             Text(timeStr, style: GoogleFonts.jetbrainsMono(fontSize: 60, fontWeight: FontWeight.bold)),
+             Text(timeStr, style: GoogleFonts.jetBrainsMono(fontSize: 60, fontWeight: FontWeight.bold)),
              if (task.type == 'training')
                Text("Q_$qIdx | SCR: $score", style: GoogleFonts.orbitron(fontSize: 24, color: score < 0 ? Colors.red : Colors.green)),
              const SizedBox(height: 20),
