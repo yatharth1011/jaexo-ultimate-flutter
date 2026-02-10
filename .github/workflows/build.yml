@@ -10,12 +10,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4  # Updated to v4
+      - uses: actions/checkout@v4
 
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
           cache: true
+
+      # DEBUG: List files to ensure we are at the root
+      - name: Debug File Structure
+        run: ls -R
+
+      # CRITICAL FIX: Generate missing Android/iOS folders
+      - name: Generate Project Scaffolding
+        run: |
+          # 1. Handle potential file extension mismatch (.yml vs .yaml)
+          if [ -f pubspec.yml ]; then mv pubspec.yml pubspec.yaml; fi
+          
+          # 2. Back up your custom logic
+          mv pubspec.yaml pubspec.yaml.bak
+          mv lib/main.dart lib/main.dart.bak
+          
+          # 3. Create a fresh Flutter project (generates android/ folder)
+          flutter create . --project-name=jaexo_ultimate --org=com.jaexo --platforms=android
+          
+          # 4. Restore your custom logic over the generated defaults
+          mv pubspec.yaml.bak pubspec.yaml
+          mv lib/main.dart.bak lib/main.dart
 
       - name: Get dependencies
         run: flutter pub get
@@ -24,7 +45,7 @@ jobs:
         run: flutter build apk --release --no-tree-shake-icons
 
       - name: Upload APK
-        uses: actions/upload-artifact@v4  # Updated to v4 (FIX IS HERE)
+        uses: actions/upload-artifact@v4
         with:
           name: jaexo-ultimate-release
           path: build/app/outputs/flutter-apk/app-release.apk
