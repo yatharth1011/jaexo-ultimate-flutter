@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4  # Updated to v4
 
       - uses: subosito/flutter-action@v2
         with:
@@ -24,7 +24,7 @@ jobs:
         run: flutter build apk --release --no-tree-shake-icons
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # Updated to v4 (FIX IS HERE)
         with:
           name: jaexo-ultimate-release
           path: build/app/outputs/flutter-apk/app-release.apk
